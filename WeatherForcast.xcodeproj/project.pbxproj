@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56C01EF31FB1A512002F8172 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56C01EEA1FB1A4FF002F8172 /* libCorePlot-CocoaTouch.a */; };
 		56EBFB221FB0D52000E4DBA4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EBFB211FB0D52000E4DBA4 /* AppDelegate.m */; };
 		56EBFB251FB0D52000E4DBA4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EBFB241FB0D52000E4DBA4 /* ViewController.m */; };
 		56EBFB281FB0D52000E4DBA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EBFB261FB0D52000E4DBA4 /* Main.storyboard */; };
@@ -15,9 +16,74 @@
 		56EBFB301FB0D52000E4DBA4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EBFB2F1FB0D52000E4DBA4 /* main.m */; };
 		56EBFB3A1FB0D52000E4DBA4 /* WeatherForcastTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EBFB391FB0D52000E4DBA4 /* WeatherForcastTests.m */; };
 		56EBFB451FB0D52000E4DBA4 /* WeatherForcastUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EBFB441FB0D52000E4DBA4 /* WeatherForcastUITests.m */; };
+		56F202E21FB1A08E00EE406C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F202E11FB1A08200EE406C /* QuartzCore.framework */; };
+		56F202E41FB1A0A400EE406C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56F202E31FB1A09A00EE406C /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		56C01EE11FB1A4FF002F8172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = "CorePlot Mac";
+		};
+		56C01EE31FB1A4FF002F8172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0730F600109492D800E95162;
+			remoteInfo = "UnitTests Mac";
+		};
+		56C01EE51FB1A4FF002F8172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C38A09781A46185200D45436;
+			remoteInfo = "CorePlot iOS";
+		};
+		56C01EE71FB1A4FF002F8172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C38A09821A46185300D45436;
+			remoteInfo = "UnitTests iOS";
+		};
+		56C01EE91FB1A4FF002F8172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C38A09BA1A4619A900D45436;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		56C01EEB1FB1A4FF002F8172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C38A09C41A4619A900D45436;
+			remoteInfo = "CorePlot-CocoaTouchTests";
+		};
+		56C01EED1FB1A4FF002F8172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C37EA6921BC83F2A0091C8F7;
+			remoteInfo = "CorePlot tvOS";
+		};
+		56C01EEF1FB1A4FF002F8172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C37EA6B71BC83F2D0091C8F7;
+			remoteInfo = "UnitTests tvOS";
+		};
+		56C01EF11FB1A50A002F8172 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C38A09B91A4619A900D45436;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
 		56EBFB361FB0D52000E4DBA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 56EBFB151FB0D52000E4DBA4 /* Project object */;
@@ -35,6 +101,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CorePlot.xcodeproj; path = "../../Lib/core-plot-2-3/core-plot/framework/CorePlot.xcodeproj"; sourceTree = "<group>"; };
 		56EBFB1D1FB0D52000E4DBA4 /* WeatherForcast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForcast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EBFB201FB0D52000E4DBA4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56EBFB211FB0D52000E4DBA4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,6 +118,8 @@
 		56EBFB401FB0D52000E4DBA4 /* WeatherForcastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherForcastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EBFB441FB0D52000E4DBA4 /* WeatherForcastUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherForcastUITests.m; sourceTree = "<group>"; };
 		56EBFB461FB0D52000E4DBA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56F202E11FB1A08200EE406C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		56F202E31FB1A09A00EE406C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +127,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C01EF31FB1A512002F8172 /* libCorePlot-CocoaTouch.a in Frameworks */,
+				56F202E41FB1A0A400EE406C /* Accelerate.framework in Frameworks */,
+				56F202E21FB1A08E00EE406C /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,13 +150,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56C01ED21FB1A4FE002F8172 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				56C01EE21FB1A4FF002F8172 /* CorePlot.framework */,
+				56C01EE41FB1A4FF002F8172 /* UnitTests.xctest */,
+				56C01EE61FB1A4FF002F8172 /* CorePlot.framework */,
+				56C01EE81FB1A4FF002F8172 /* UnitTests iOS.xctest */,
+				56C01EEA1FB1A4FF002F8172 /* libCorePlot-CocoaTouch.a */,
+				56C01EEC1FB1A4FF002F8172 /* CorePlot-CocoaTouchTests.xctest */,
+				56C01EEE1FB1A4FF002F8172 /* CorePlot.framework */,
+				56C01EF01FB1A4FF002F8172 /* UnitTests tvOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		56EBFB141FB0D52000E4DBA4 = {
 			isa = PBXGroup;
 			children = (
+				56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */,
 				56EBFB1F1FB0D52000E4DBA4 /* WeatherForcast */,
 				56EBFB381FB0D52000E4DBA4 /* WeatherForcastTests */,
 				56EBFB431FB0D52000E4DBA4 /* WeatherForcastUITests */,
 				56EBFB1E1FB0D52000E4DBA4 /* Products */,
+				56F202DF1FB19FB400EE406C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +221,15 @@
 			path = WeatherForcastUITests;
 			sourceTree = "<group>";
 		};
+		56F202DF1FB19FB400EE406C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56F202E31FB1A09A00EE406C /* Accelerate.framework */,
+				56F202E11FB1A08200EE406C /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +244,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				56C01EF21FB1A50A002F8172 /* PBXTargetDependency */,
 			);
 			name = WeatherForcast;
 			productName = WeatherForcast;
@@ -224,6 +323,12 @@
 			mainGroup = 56EBFB141FB0D52000E4DBA4;
 			productRefGroup = 56EBFB1E1FB0D52000E4DBA4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 56C01ED21FB1A4FE002F8172 /* Products */;
+					ProjectRef = 56C01ED11FB1A4FE002F8172 /* CorePlot.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				56EBFB1C1FB0D52000E4DBA4 /* WeatherForcast */,
@@ -232,6 +337,65 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		56C01EE21FB1A4FF002F8172 /* CorePlot.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
+			remoteRef = 56C01EE11FB1A4FF002F8172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		56C01EE41FB1A4FF002F8172 /* UnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.xctest;
+			remoteRef = 56C01EE31FB1A4FF002F8172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		56C01EE61FB1A4FF002F8172 /* CorePlot.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
+			remoteRef = 56C01EE51FB1A4FF002F8172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		56C01EE81FB1A4FF002F8172 /* UnitTests iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "UnitTests iOS.xctest";
+			remoteRef = 56C01EE71FB1A4FF002F8172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		56C01EEA1FB1A4FF002F8172 /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 56C01EE91FB1A4FF002F8172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		56C01EEC1FB1A4FF002F8172 /* CorePlot-CocoaTouchTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "CorePlot-CocoaTouchTests.xctest";
+			remoteRef = 56C01EEB1FB1A4FF002F8172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		56C01EEE1FB1A4FF002F8172 /* CorePlot.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CorePlot.framework;
+			remoteRef = 56C01EED1FB1A4FF002F8172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		56C01EF01FB1A4FF002F8172 /* UnitTests tvOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "UnitTests tvOS.xctest";
+			remoteRef = 56C01EEF1FB1A4FF002F8172 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		56EBFB1B1FB0D52000E4DBA4 /* Resources */ = {
@@ -290,6 +454,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		56C01EF21FB1A50A002F8172 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = 56C01EF11FB1A50A002F8172 /* PBXContainerItemProxy */;
+		};
 		56EBFB371FB0D52000E4DBA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 56EBFB1C1FB0D52000E4DBA4 /* WeatherForcast */;
@@ -432,8 +601,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 74L8GC78RQ;
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = WeatherForcast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bachkhoa.WeatherForcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -448,6 +619,7 @@
 				DEVELOPMENT_TEAM = 74L8GC78RQ;
 				INFOPLIST_FILE = WeatherForcast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bachkhoa.WeatherForcast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
