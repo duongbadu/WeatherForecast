@@ -49,11 +49,11 @@
             return;
         }
         
-        [self onRequested:pkg];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self onRequested:pkg];
+        });
         
     }] resume];
-    
-    [self drawChart];
 }
 
 
@@ -70,12 +70,36 @@
     
     NSArray* temps = dict[@"monthVals"];
     NSLog(@"temps is: %@", temps);
+    
+    [self drawChart:temps];
 }
 
-- (void) drawChart
+- (void) drawChart: (NSArray*) result
 {
     NSLog(@"Enter: %s", __FUNCTION__);
     
+    NSMutableArray* data = [NSMutableArray array];
+    [data addObject:[NSNumber numberWithFloat:1.0f]];
+    [data addObject:[NSNumber numberWithFloat:2.0f]];
+    [data addObject:[NSNumber numberWithFloat:3.0f]];
+
+    //get maximum degree
+    float maxDegree = [result[0] floatValue];
+    float minDegree = [result[0] floatValue];
+
+    for (int i = 0; i < [result count]; ++i) {
+        float d = [result[i] floatValue];
+        if (d < minDegree) {
+            minDegree = d;
+        }
+
+        if (d > maxDegree) {
+            maxDegree = d;
+        }
+    }
+    
+    float deltaD = (maxDegree - minDegree) / 9.0f;
+
     //device size
     float w = self.view.frame.size.width;
     float h = self.view.frame.size.height;
@@ -102,21 +126,69 @@
     [self.view.layer addSublayer:_graphLayout];
     
     //draw ox line
-    [_graphPath moveToPoint:CGPointMake(10, h - 100)];
+    [_graphPath moveToPoint:CGPointMake(30, h - 100)];
     [_graphPath addLineToPoint:CGPointMake(w - 10, h - 100)];
     
     //draw oy line
-    [_graphPath moveToPoint:CGPointMake(10, h - 100)];
-    [_graphPath addLineToPoint:CGPointMake(10, 10)];
-        
-    [_graphPath moveToPoint:CGPointMake(100, 100)];
-    [_graphPath addLineToPoint:CGPointMake(200, 350)];
-    [_graphPath addLineToPoint:CGPointMake(300, 300)];
-    [_graphPath addLineToPoint:CGPointMake(400, 400)];
-    [_graphPath addLineToPoint:CGPointMake(500, 600)];
-    _graphLayout.path = [_graphPath CGPath];
+    [_graphPath moveToPoint:CGPointMake(30, h - 100)];
+    [_graphPath addLineToPoint:CGPointMake(30, 10)];
     
+    float dx = (w - 40) / 13.0f;
+    float x = 30 + dx;
+    float dy = (h - 100 - 10) / 12.0f;
+    float y = h - 100 - dy;
+    
+    //draw 12 month
+    for (int i = 0; i < 12; ++i) {
+        UILabel* monthLb = [[UILabel alloc] init];
+        monthLb.text = [NSString stringWithFormat:@"%d", i + 1];
+        monthLb.textColor = [UIColor blackColor];
+        monthLb.frame = CGRectMake(x, h - 140, 100, 100);
+        [self.view addSubview:monthLb];
+        monthLb.font = [UIFont systemFontOfSize:11];
+        
+        x += dx;
+    }
+    
+    //draw 10 degree
+    for (int i = 0; i < 10; ++i) {
+        float d = minDegree + (i * deltaD);
+        //draw min
+        UILabel* tempLb = [[UILabel alloc] init];
+        tempLb.text = [NSString stringWithFormat:@"%.1f", d];
+        tempLb.textColor = [UIColor blackColor];
+        tempLb.frame = CGRectMake(2, y, 30, 30);
+        [self.view addSubview:tempLb];
+        tempLb.font = [UIFont systemFontOfSize:11];
+        
+        y -= dy;
+    }
+    
+    x = 30 + dx;
+    float y0 = h - 100 - dy;
+    
+    //draw 12 month degree
+    for (int i = 0; i < 12; ++i) {
+        float d = [result[i] floatValue];
+        
+        float t = (d - minDegree);
+        y = y0 - t * deltaD * dy;
 
+        if (i == 0) {
+            [_graphPath moveToPoint:CGPointMake(x, y)];
+        }
+        else {
+            [_graphPath addLineToPoint:CGPointMake(x, y)];
+        }
+
+        x += dx;
+    }
+    
+    _graphLayout.path = [_graphPath CGPath];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 @end
