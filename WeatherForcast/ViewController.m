@@ -76,6 +76,16 @@
 {
     NSLog(@"Enter: %s", __FUNCTION__);
     
+    //device size
+    float w = self.view.frame.size.width;
+    float h = self.view.frame.size.height;
+    NSLog(@"w = %f, h = %f", w, h);
+    
+    //draw point
+    UIView* rect = [[UIView alloc] initWithFrame:CGRectMake(90, 90, 20, 20)];
+    rect.backgroundColor = [UIColor redColor];
+    [self.view addSubview:rect];
+    
     //Bezier path for ploting graph
     UIBezierPath* _graphPath = [[UIBezierPath alloc]init];
     [_graphPath setLineWidth:10];
@@ -83,7 +93,7 @@
     //CAShapeLayer for graph allocation
     CAShapeLayer* _graphLayout = [CAShapeLayer layer];
     _graphLayout.frame = CGRectMake(self.view.frame.size.width * 0, 0, self.view.frame.size.width*0.8, (self.view.frame.size.height*0.9));
-    _graphLayout.fillColor = [[UIColor colorWithRed:0 green:0 blue:255 alpha:0.1] CGColor];
+    _graphLayout.fillColor = [UIColor clearColor].CGColor;
     _graphLayout.strokeColor = [UIColor blueColor].CGColor;
     _graphLayout.lineWidth = 2;
     _graphLayout.path = [_graphPath CGPath];
@@ -91,12 +101,22 @@
     _graphLayout.lineJoin = @"round";
     [self.view.layer addSublayer:_graphLayout];
     
+    //draw ox line
+    [_graphPath moveToPoint:CGPointMake(10, h - 100)];
+    [_graphPath addLineToPoint:CGPointMake(w - 10, h - 100)];
+    
+    //draw oy line
+    [_graphPath moveToPoint:CGPointMake(10, h - 100)];
+    [_graphPath addLineToPoint:CGPointMake(10, 10)];
+        
     [_graphPath moveToPoint:CGPointMake(100, 100)];
     [_graphPath addLineToPoint:CGPointMake(200, 350)];
     [_graphPath addLineToPoint:CGPointMake(300, 300)];
     [_graphPath addLineToPoint:CGPointMake(400, 400)];
     [_graphPath addLineToPoint:CGPointMake(500, 600)];
     _graphLayout.path = [_graphPath CGPath];
+    
+
 }
 
 @end
