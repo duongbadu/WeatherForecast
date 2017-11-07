@@ -8,11 +8,16 @@
 
 #import "ViewController.h"
 
-#define FORCAST_URL    @"http://climatedataapi.worldbank.org/climateweb/rest/v1/country/mavg/bccr_bcm2_0/a2/tas/2020/2039/vnm"
+#define FORCAST_URL    @"http://climatedataapi.worldbank.org/climateweb/rest/v1/country/mavg/bccr_bcm2_0/a2/tas/2020/2039/"
 #define SUPPORT_URL    @"https://datahelpdesk.worldbank.org/knowledgebase/articles/902061-climate-data-api"
 
-@interface ViewController ()
+//country code
+//https://unstats.un.org/unsd/methodology/m49/
 
+#define CHART_ELEMENT   12345
+
+@interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *countryCodeField;
 @end
 
 @implementation ViewController
@@ -21,7 +26,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSString *urlStr = FORCAST_URL;
+    [self getData];
+}
+
+- (void)getData
+{
+    //get country code from text field
+    NSString* countryCode = self.countryCodeField.text;
+    NSLog(@"code: %@", countryCode);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@", FORCAST_URL, countryCode];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSURLSession *session = [NSURLSession sharedSession];
     
@@ -56,7 +70,6 @@
     }] resume];
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -87,7 +100,7 @@
     float maxDegree = [result[0] floatValue];
     float minDegree = [result[0] floatValue];
 
-    for (int i = 0; i < [result count]; ++i) {
+    for (int i = 1; i < [result count]; ++i) {
         float d = [result[i] floatValue];
         if (d < minDegree) {
             minDegree = d;
@@ -99,23 +112,19 @@
     }
     
     float deltaD = (maxDegree - minDegree) / 9.0f;
+    NSLog(@"delta d: %f", deltaD);
 
     //device size
     float w = self.view.frame.size.width;
     float h = self.view.frame.size.height;
     NSLog(@"w = %f, h = %f", w, h);
     
-    //draw point
-    UIView* rect = [[UIView alloc] initWithFrame:CGRectMake(90, 90, 20, 20)];
-    rect.backgroundColor = [UIColor redColor];
-    [self.view addSubview:rect];
-    
     //Bezier path for ploting graph
     UIBezierPath* _graphPath = [[UIBezierPath alloc]init];
     [_graphPath setLineWidth:10];
     
     //CAShapeLayer for graph allocation
-    CAShapeLayer* _graphLayout = [CAShapeLayer layer];
+    _graphLayout = [CAShapeLayer layer];
     _graphLayout.frame = CGRectMake(self.view.frame.size.width * 0, 0, self.view.frame.size.width*0.8, (self.view.frame.size.height*0.9));
     _graphLayout.fillColor = [UIColor clearColor].CGColor;
     _graphLayout.strokeColor = [UIColor blueColor].CGColor;
@@ -131,7 +140,7 @@
     
     //draw oy line
     [_graphPath moveToPoint:CGPointMake(30, h - 100)];
-    [_graphPath addLineToPoint:CGPointMake(30, 10)];
+    [_graphPath addLineToPoint:CGPointMake(30, 100)];
     
     float dx = (w - 40) / 13.0f;
     float x = 30 + dx;
@@ -144,6 +153,7 @@
         monthLb.text = [NSString stringWithFormat:@"%d", i + 1];
         monthLb.textColor = [UIColor blackColor];
         monthLb.frame = CGRectMake(x, h - 140, 100, 100);
+        monthLb.tag = CHART_ELEMENT;
         [self.view addSubview:monthLb];
         monthLb.font = [UIFont systemFontOfSize:11];
         
@@ -157,7 +167,8 @@
         UILabel* tempLb = [[UILabel alloc] init];
         tempLb.text = [NSString stringWithFormat:@"%.1f", d];
         tempLb.textColor = [UIColor blackColor];
-        tempLb.frame = CGRectMake(2, y, 30, 30);
+        tempLb.frame = CGRectMake(2, y, 30, 9);
+        tempLb.tag = CHART_ELEMENT;
         [self.view addSubview:tempLb];
         tempLb.font = [UIFont systemFontOfSize:11];
         
@@ -172,7 +183,13 @@
         float d = [result[i] floatValue];
         
         float t = (d - minDegree);
-        y = y0 - t * deltaD * dy;
+        y = y0 - (t / deltaD) * dy;
+        
+        //draw point
+        UIView* rect = [[UIView alloc] initWithFrame:CGRectMake(x - 5, y - 5, 10, 10)];
+        rect.backgroundColor = [UIColor yellowColor];
+        rect.tag = CHART_ELEMENT;
+        [self.view addSubview:rect];
 
         if (i == 0) {
             [_graphPath moveToPoint:CGPointMake(x, y)];
@@ -190,5 +207,20 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
+
+- (IBAction)onRefresh:(id)sender {
+    NSLog(@"Enter: %s", __FUNCTION__);
+    
+    [self.countryCodeField resignFirstResponder];
+    
+    while ([self.view viewWithTag:CHART_ELEMENT]) {
+        [[self.view viewWithTag:CHART_ELEMENT] removeFromSuperview];
+    }
+    
+    [_graphLayout removeFromSuperlayer];
+    
+    [self getData];
+}
+
 
 @end
